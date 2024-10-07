@@ -1,3 +1,6 @@
+import time
+import tracemalloc
+
 def selectionsort(input_name, output_name):
   input_file = open(input_name, 'r')
   output_file = open(output_name, 'w')
@@ -18,4 +21,10 @@ def selectionsort(input_name, output_name):
   output_file.close()
 
 if __name__ == '__main__':
+  t_start = time.perf_counter()
+  tracemalloc.start()
+
   selectionsort('input.txt', 'output.txt')
+
+  print("Program took {} ms".format(time.perf_counter() - t_start))
+  print("Program took {} MB".format(tracemalloc.get_traced_memory()[1] / (2**20)))
