@@ -28,5 +28,4 @@ if __name__ == '__main__':
 
   insertionsort('input.txt', 'output.txt')
 
-  print("Program took {} ms".format(time.perf_counter() - t_start))
-  print("Program took {} MB".format(tracemalloc.get_traced_memory()[1] / (2**20)))
+  print("Program took {} ms and {} MB".format(round(time.perf_counter() - t_start, 5), round(tracemalloc.get_traced_memory()[1] / (2**20), 5)))
