@@ -9,8 +9,8 @@
 ### Инструкция по запуску
 
 ```bash
-git clone https://github.com/vadddiim/algo-lab0.git
-cd lab1/task{n}/src
+git clone https://github.com/vadddiim/algo-labs.git
+cd algo-labs/lab1/task{n}/src
 
 ## Ниже в зависимости от задания
 
