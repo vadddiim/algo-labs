@@ -1,18 +1,15 @@
 import unittest
 from lab2.task5.src.majority import majority_file
-import tempfile
+from utils import create_temp_files, writefile
 import os
 
 class MajorityTestCase(unittest.TestCase):
     def test_majority1(self):
-        input_path = tempfile.mkstemp()[1]
-        outfile_path = tempfile.mkstemp()[1]
+        input_path, outfile_path = create_temp_files()
 
         output_file = open(outfile_path, 'r')
 
-        input_file = open(input_path, 'w')
-        input_file.write("5\n2 3 9 2 2")
-        input_file.close()
+        writefile(input_path, "5\n2 3 9 2 2")
         
         try:
           majority_file(input_path, outfile_path)
@@ -24,14 +21,11 @@ class MajorityTestCase(unittest.TestCase):
           os.remove(outfile_path)
 
     def test_majority2(self):
-        input_path = tempfile.mkstemp()[1]
-        outfile_path = tempfile.mkstemp()[1]
+        input_path, outfile_path = create_temp_files()
 
         output_file = open(outfile_path, 'r')
 
-        input_file = open(input_path, 'w')
-        input_file.write("4\n1 2 3 4")
-        input_file.close()
+        writefile(input_path, "4\n1 2 3 4")
         
         try:
           majority_file(input_path, outfile_path)

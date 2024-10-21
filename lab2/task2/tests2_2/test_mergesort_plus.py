@@ -1,18 +1,15 @@
 import unittest
 from lab2.task2.src.mergesort_plus import mergesort_fileplus
-import tempfile
 import os
+from utils import create_temp_files, writefile
 
 class MergeSortPlusTestCase(unittest.TestCase):
     def test_mergesort_plus(self):
-        input_path = tempfile.mkstemp()[1]
-        outfile_path = tempfile.mkstemp()[1]
+        input_path, outfile_path = create_temp_files()
 
         output_file = open(outfile_path, 'r')
 
-        input_file = open(input_path, 'w')
-        input_file.write('4\n9 7 5 8')
-        input_file.close()
+        writefile(input_path, '4\n9 7 5 8')
         
         try:
           mergesort_fileplus(input_path, outfile_path)

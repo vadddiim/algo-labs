@@ -1,6 +1,6 @@
 from lab2.task1.src.mergesort import mergesort
 from lab2.task4.src.binarysearch import binarysearch
-from utils import measure_performance
+from utils import measure_performance, writefile
 
 def majority(arr):
   n = len(arr)
@@ -16,17 +16,15 @@ def majority(arr):
 
 def majority_file(input_name, output_name):
     input_file = open(input_name, 'r')
-    output_file = open(output_name, 'w')
 
     n = int(input_file.readline())
     array = list(map(int, input_file.readline().split()))
 
     result = majority(array)
 
-    output_file.write(str(result))
+    writefile(output_name, str(result))
 
     input_file.close()
-    output_file.close()
 
 @measure_performance
 def main():

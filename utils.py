@@ -1,6 +1,7 @@
 from functools import wraps
 import tracemalloc
 from time import perf_counter_ns
+import tempfile
 
 def measure_performance(func):
     '''Measure performance of a function'''
@@ -17,3 +18,13 @@ def measure_performance(func):
         print(f'{"-"*40}')
         tracemalloc.stop()
     return wrapper
+
+def create_temp_files():
+    input_path = tempfile.mkstemp()[1]
+    outfile_path = tempfile.mkstemp()[1]
+
+    return input_path, outfile_path
+
+def writefile(path, data):
+    with open(path, 'w') as file:
+        file.write(data)

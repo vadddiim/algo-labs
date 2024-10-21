@@ -1,18 +1,15 @@
 import unittest
 from lab2.task7.src.max_subarray import maximum_subarray_file
-import tempfile
+from utils import create_temp_files, writefile
 import os
 
 class MaxSubArrayTestCase(unittest.TestCase):
     def test_maxsubarray(self):
-        input_path = tempfile.mkstemp()[1]
-        outfile_path = tempfile.mkstemp()[1]
+        input_path, outfile_path = create_temp_files()
 
         output_file = open(outfile_path, 'r')
 
-        input_file = open(input_path, 'w')
-        input_file.write("10\n-2 1 -3 4 -1 2 1 -5 4 -1")
-        input_file.close()
+        writefile(input_path, "10\n-2 1 -3 4 -1 2 1 -5 4 -1")
         
         try:
           maximum_subarray_file(input_path, outfile_path)

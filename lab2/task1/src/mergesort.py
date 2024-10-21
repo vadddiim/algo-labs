@@ -1,5 +1,5 @@
 import random
-from utils import measure_performance
+from utils import measure_performance, writefile
 
 def merge(A, p, q, r, data=[]):
     n1 = q - p + 1
@@ -52,17 +52,15 @@ def mergesort(A, p, r, data=[]):
 
 def mergesort_file(input_name, output_name):
   input_file = open(input_name, 'r')
-  output_file = open(output_name, 'w')
 
   n = int(input_file.readline())
   arr = list(map(int, input_file.readline().split()))
 
   mergesort(arr, 0, n - 1)
 
-  output_file.write(' '.join(map(str, arr)))
+  writefile(output_name, ' '.join(map(str, arr)))
 
   input_file.close()
-  output_file.close()
 
 @measure_performance
 def example1():

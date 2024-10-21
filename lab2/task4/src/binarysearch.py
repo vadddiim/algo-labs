@@ -1,4 +1,4 @@
-from utils import measure_performance
+from utils import measure_performance, writefile
 
 def binarysearch(arr, x, reversed=False):
     low = 0
@@ -24,7 +24,6 @@ def binarysearch(arr, x, reversed=False):
 
 def binarysearch_file(input_name, output_name):
     input_file = open(input_name, 'r')
-    output_file = open(output_name, 'w')
 
     n = int(input_file.readline())
     array = list(map(int, input_file.readline().split()))
@@ -33,10 +32,9 @@ def binarysearch_file(input_name, output_name):
 
     results = [binarysearch(array, query) for query in queries]
 
-    output_file.write(' '.join(map(str, results)))
+    writefile(output_name, ' '.join(map(str, results)))
 
     input_file.close()
-    output_file.close()
 
 @measure_performance
 def main():

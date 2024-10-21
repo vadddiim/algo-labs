@@ -1,5 +1,5 @@
 import random
-from utils import measure_performance
+from utils import measure_performance, writefile
 
 def find_max_crossing_subarray(A, low, mid, high):
     left_sum = float('-inf')
@@ -40,15 +40,13 @@ def find_maximum_subarray(A, low, high):
 
 def maximum_subarray_file(input_name, output_name):
     input_file = open(input_name, 'r')
-    output_file = open(output_name, 'w')
 
     n = int(input_file.readline())
     arr = list(map(int, input_file.readline().split()))
 
-    output_file.write(' '.join(map(str, find_maximum_subarray(arr, 0, n - 1))))
+    writefile(output_name, ' '.join(map(str, find_maximum_subarray(arr, 0, n - 1))))
 
     input_file.close()
-    output_file.close()
 
 @measure_performance
 def example1():
