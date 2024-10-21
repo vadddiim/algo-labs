@@ -1,24 +1,26 @@
 from lab2.task1.src.mergesort import mergesort
 from utils import measure_performance
 
-def inversions_file(input_name, output_name):
+def mergesort_fileplus(input_name, output_name):
     input_file = open(input_name, 'r')
     output_file = open(output_name, 'w')
 
     n = int(input_file.readline())
     arr = list(map(int, input_file.readline().split()))
 
-    _, inv_count, _ = mergesort(arr, 0, n - 1)
+    data = []
+    mergesort(arr, 0, n - 1, data)
 
-    output_file.write(str(inv_count))
+    for info in data:
+        output_file.write(f"{info[0]} {info[1]} {info[2]} {info[3]}\n")
+    output_file.write(' '.join(map(str, arr)))
 
     input_file.close()
     output_file.close()
-
+  
 @measure_performance
 def main():
-    inversions_file('input.txt', 'output.txt')
-    print("[FROM FILE]")
+    mergesort_fileplus('input.txt', 'output.txt')
 
 if __name__ == '__main__':
     main()

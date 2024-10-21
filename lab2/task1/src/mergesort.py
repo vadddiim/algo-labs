@@ -1,7 +1,7 @@
 import random
 from utils import measure_performance
 
-def merge(A, p, q, r):
+def merge(A, p, q, r, data=[]):
     n1 = q - p + 1
     n2 = r - q
     L = [0] * n1
@@ -36,18 +36,19 @@ def merge(A, p, q, r):
         j += 1
         k += 1
 
+    data.append((p + 1, r + 1, A[p], A[r]))
     return inv_count
 
-def mergesort(A, p, r):
+def mergesort(A, p, r, data=[]):
     inv_count = 0
 
     if p < r:
         q = (p + r) // 2
-        inv_count += mergesort(A, p, q)[1]
-        inv_count += mergesort(A, q + 1, r)[1]
-        inv_count += merge(A, p, q, r)
+        inv_count += mergesort(A, p, q, data)[1]
+        inv_count += mergesort(A, q + 1, r, data)[1]
+        inv_count += merge(A, p, q, r, data)
 
-    return A, inv_count
+    return A, inv_count, data
 
 def mergesort_file(input_name, output_name):
   input_file = open(input_name, 'r')
