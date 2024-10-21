@@ -1,6 +1,5 @@
-import time
-import tracemalloc
 import random
+from utils import measure_performance
 
 def merge(A, p, q, r):
     n1 = q - p + 1
@@ -57,32 +56,24 @@ def mergesort_file(input_name, output_name):
   input_file.close()
   output_file.close()
 
+@measure_performance
+def example1():
+    worst_array = sorted([random.randint(0, 1000) for _ in range(10**4)], reverse=True)
+    mergesort(worst_array, 0, len(worst_array) - 1)
+    print("[WORST CASE]")
+
+@measure_performance
+def example2():
+    best_array = sorted([random.randint(0, 1000) for _ in range(10**4)])
+    mergesort(best_array, 0, len(best_array) - 1)
+    print("[BEST CASE]")
+
+@measure_performance
+def example3():
+    mergesort_file("input.txt", "output.txt")
+    print("[FROM FILE]")
+
 if __name__ == '__main__':
-  worst_array = sorted([random.randint(0, 1000) for _ in range(10**4)], reverse=True)
-  best_array = sorted([random.randint(0, 1000) for _ in range(10**4)])
-
-  t_start = time.perf_counter()
-  tracemalloc.start()
-
-  mergesort(worst_array, 0, len(worst_array) - 1)
-  worst_time = round((time.perf_counter() - t_start) * 1000)
-  worst_memory = round(tracemalloc.get_traced_memory()[1] / (2**20), 5)
-
-  print("[WORST CASE] Script took {} ms and {} MB".format(worst_time, worst_memory))
-
-  t_start = time.perf_counter()
-  tracemalloc.start()
-
-  mergesort(best_array, 0, len(best_array) - 1)
-  best_time = round((time.perf_counter() - t_start) * 1000)
-  best_memory = round(tracemalloc.get_traced_memory()[1] / (2**20), 5)
-
-  print("[BEST CASE] Script took {} ms and {} MB".format(best_time, best_memory))
-  print("-- [AVERAGE] Script took {} ms and {} MB".format(round((worst_time + best_time) / 2), round((worst_memory + best_memory) / 2, 5)))
-
-  t_start = time.perf_counter()
-  tracemalloc.start()
-
-  mergesort_file("input.txt", "output.txt")
-
-  print("[FROM FILE] Script took {} ms and {} MB".format(round((time.perf_counter() - t_start) * 1000), round(tracemalloc.get_traced_memory()[1] / (2**20), 5)))
+  example1()
+  example2()
+  example3()

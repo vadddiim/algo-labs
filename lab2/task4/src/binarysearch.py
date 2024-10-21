@@ -1,5 +1,4 @@
-import time
-import tracemalloc
+from utils import measure_performance
 
 def binarysearch(arr, x):
     low = 0
@@ -33,10 +32,10 @@ def binarysearch_file(input_name, output_name):
     input_file.close()
     output_file.close()
 
-if __name__ == '__main__':
-    t_start = time.perf_counter()
-    tracemalloc.start()
-
+@measure_performance
+def main():
     binarysearch_file("input.txt", "output.txt")
+    print("[FROM FILE]")
 
-    print("[FROM FILE] Script took {} ms and {} MB".format(round((time.perf_counter() - t_start) * 1000), round(tracemalloc.get_traced_memory()[1] / (2**20), 5)))
+if __name__ == '__main__':
+    main()
