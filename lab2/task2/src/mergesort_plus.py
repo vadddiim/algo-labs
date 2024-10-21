@@ -20,7 +20,7 @@ def mergesort_fileplus(input_name, output_name):
   
 @measure_performance
 def main():
-    mergesort_fileplus('input.txt', 'output.txt')
+    mergesort_fileplus('../txtf/input.txt', '../txtf/output.txt')
 
 if __name__ == '__main__':
     main()

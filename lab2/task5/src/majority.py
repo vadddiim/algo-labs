@@ -30,7 +30,7 @@ def majority_file(input_name, output_name):
 
 @measure_performance
 def main():
-    majority_file("input.txt", "output.txt")
+    majority_file("../txtf/input.txt", "../txtf/output.txt")
     print("[FROM FILE]")
 
 if __name__ == '__main__':

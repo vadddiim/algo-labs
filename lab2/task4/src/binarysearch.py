@@ -40,7 +40,7 @@ def binarysearch_file(input_name, output_name):
 
 @measure_performance
 def main():
-    binarysearch_file("input.txt", "output.txt")
+    binarysearch_file("../txtf/input.txt", "../txtf/output.txt")
     print("[FROM FILE]")
 
 if __name__ == '__main__':

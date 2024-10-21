@@ -78,7 +78,7 @@ def example2():
 
 @measure_performance
 def example3():
-    mergesort_file("input.txt", "output.txt")
+    mergesort_file("../txtf/input.txt", "../txtf/output.txt")
     print("[FROM FILE]")
 
 if __name__ == '__main__':

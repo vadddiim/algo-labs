@@ -57,7 +57,7 @@ def example1():
 
 @measure_performance
 def example2():
-   maximum_subarray_file('input.txt', 'output.txt')
+   maximum_subarray_file('../txtf/input.txt', '../txtf/output.txt')
    print("[FROM FILE]")
 
 if __name__ == '__main__':

@@ -17,7 +17,7 @@ def inversions_file(input_name, output_name):
 
 @measure_performance
 def main():
-    inversions_file('input.txt', 'output.txt')
+    inversions_file('../txtf/input.txt', '../txtf/output.txt')
     print("[FROM FILE]")
 
 if __name__ == '__main__':
