@@ -1,8 +1,9 @@
 from utils import measure_performance
 
-def binarysearch(arr, x):
+def binarysearch(arr, x, reversed=False):
     low = 0
     high = len(arr) - 1
+    result = -1
 
     while low <= high:
         mid = (low + high) // 2
@@ -13,8 +14,13 @@ def binarysearch(arr, x):
         elif mid_val > x:
             high = mid - 1
         else:
-            return mid
-    return -1
+            result = mid
+            if reversed:
+                low = mid + 1
+            else:
+                high = mid - 1
+        
+    return result
 
 def binarysearch_file(input_name, output_name):
     input_file = open(input_name, 'r')
