@@ -14,12 +14,15 @@ def merge(A, p, q, r):
     
     i = j = 0
     k = p
+    inv_count = 0
+
     while i < n1 and j < n2:
         if L[i] <= R[j]:
             A[k] = L[i]
             i += 1
         else:
             A[k] = R[j]
+            inv_count += n1 - i
             j += 1
         k += 1
     
@@ -33,14 +36,18 @@ def merge(A, p, q, r):
         j += 1
         k += 1
 
+    return inv_count
+
 def mergesort(A, p, r):
+    inv_count = 0
+
     if p < r:
         q = (p + r) // 2
-        mergesort(A, p, q)
-        mergesort(A, q + 1, r)
-        merge(A, p, q, r)
+        inv_count += mergesort(A, p, q)[1]
+        inv_count += mergesort(A, q + 1, r)[1]
+        inv_count += merge(A, p, q, r)
 
-    return A
+    return A, inv_count
 
 def mergesort_file(input_name, output_name):
   input_file = open(input_name, 'r')

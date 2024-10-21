@@ -1,22 +1,22 @@
 import unittest
-from lab2.task7.src.max_subarray import maximum_subarray_file
+from lab2.task3.src.inversions import inversions_file
 import tempfile
 import os
 
-class MaxSubArrayTestCase(unittest.TestCase):
-    def test_maxsubarray(self):
+class InversionsTestCase(unittest.TestCase):
+    def test_inversions(self):
         input_path = tempfile.mkstemp()[1]
         outfile_path = tempfile.mkstemp()[1]
 
         output_file = open(outfile_path, 'r')
 
         input_file = open(input_path, 'w')
-        input_file.write("10\n-2 1 -3 4 -1 2 1 -5 4 -1")
+        input_file.write("10\n1 8 2 1 4 7 3 2 3 6")
         input_file.close()
         
         try:
-          maximum_subarray_file(input_path, outfile_path)
-          self.assertEqual(output_file.readline(), "3 6 6")
+          inversions_file(input_path, outfile_path)
+          self.assertEqual(output_file.readline(), "17")
         finally:
           output_file.close()
 
